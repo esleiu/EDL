@@ -1,88 +1,88 @@
 package atividade_deque;
-public class DequeDL implements IDeque {
-    private NoDL inicio; 
-    private NoDL fim;
-    private int tamanho;
+public class dequedl implements IDeque {
+    private NoDL inicioDequedl; 
+    private NoDL fimDequedl;
+    private int tamanhoDequedl;
 
-    public DequeDL() {
-        this.inicio = null;
-        this.fim = null;
-        this.tamanho = 0;
+    public dequedl() {
+        this.inicioDequedl = null;
+        this.fimDequedl = null;
+        this.tamanhoDequedl = 0;
     }
 
     @Override
-    public void inserirInicio(Object elemento) { // O(1)
+    public void inseririnicio(Object elemento) { // O(1)
         NoDL novoNo = new NoDL(elemento);
         if (estaVazia()) {
-            inicio = novoNo;
-            fim = novoNo;
+            inicioDequedl = novoNo;
+            fimDequedl = novoNo;
         } else {
-            novoNo.setNext(inicio);
-            inicio.setPrev(novoNo);
-            inicio = novoNo;
+            novoNo.setNext(inicioDequedl);
+            inicioDequedl.setPrev(novoNo);
+            inicioDequedl = novoNo;
         }
-        tamanho++;
+        tamanhoDequedl++;
     }
 
     @Override
-    public void inserirFim(Object elemento) { // O(1)
+    public void inserirfim(Object elemento) { // O(1)
         NoDL novoNo = new NoDL(elemento);
         if (estaVazia()) {
-            inicio = novoNo;
-            fim = novoNo;
+            inicioDequedl = novoNo;
+            fimDequedl = novoNo;
         } else {
-            novoNo.setPrev(fim);
-            fim.setNext(novoNo);
-            fim = novoNo;
+            novoNo.setPrev(fimDequedl);
+            fimDequedl.setNext(novoNo);
+            fimDequedl = novoNo;
         }
-        tamanho++;
+        tamanhoDequedl++;
     }
 
     @Override
-    public Object removerInicio() { // O(1)
+    public Object removerinicio() { // O(1)
         if (estaVazia()) throw new EDequeVazio("Deque vazio."); 
 
-        Object elemento = inicio.getElemento();
-        inicio = inicio.getNext();
+        Object elemento = inicioDequedl.getElemento();
+        inicioDequedl = inicioDequedl.getNext();
         
-        if (inicio != null) {
-            inicio.setPrev(null);
+        if (inicioDequedl != null) {
+            inicioDequedl.setPrev(null);
         } else {
-            fim = null; 
+            fimDequedl = null; 
         }
-        tamanho--;
+        tamanhoDequedl--;
         return elemento;
     }
 
     @Override
-    public Object removerFim() { // O(1)
+    public Object removerfim() { // O(1)
         if (estaVazia()) throw new EDequeVazio("Deque vazio."); 
 
-        Object elemento = fim.getElemento();
-        fim = fim.getPrev(); 
-        if (fim != null) {
-            fim.setNext(null); 
+        Object elemento = fimDequedl.getElemento();
+        fimDequedl = fimDequedl.getPrev(); 
+        if (fimDequedl != null) {
+            fimDequedl.setNext(null); 
         } else {
-            inicio = null; 
+            inicioDequedl = null; 
         }
-        tamanho--;
+        tamanhoDequedl--;
         return elemento;
     }
 
     @Override
     public Object primeiro() { 
         if (estaVazia()) throw new EDequeVazio("Deque vazio.");
-        return inicio.getElemento();
+        return inicioDequedl.getElemento();
     }
     @Override
     public Object ultimo() { 
         if (estaVazia()) throw new EDequeVazio("Deque vazio.");
-        return fim.getElemento();
+        return fimDequedl.getElemento();
     }
 
     @Override
-    public int tamanho() { return tamanho; } 
+    public int tamanho() { return tamanhoDequedl; } 
 
     @Override
-    public boolean estaVazia() { return tamanho == 0; }
+    public boolean estavazia() { return tamanhoDequedl == 0; }
 }

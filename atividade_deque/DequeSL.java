@@ -1,94 +1,94 @@
 package atividade_deque;
-public class DequeSL implements IDeque {
-    private NoSL inicio; 
-    private NoSL fim; 
-    private int tamanho;
+public class dequesl implements IDeque {
+    private NoSL inicioDequesl; 
+    private NoSL fimDequesl; 
+    private int tamanhoDequesl;
 
-    public DequeSL() {
-        this.inicio = null;
-        this.fim = null;
-        this.tamanho = 0;
+    public dequesl() {
+        this.inicioDequesl = null;
+        this.fimDequesl = null;
+        this.tamanhoDequesl = 0;
     }
 
     @Override
-    public void inserirInicio(Object elemento) { // O(1)
+    public void inseririnicio(Object elemento) { // O(1)
         NoSL novoNo = new NoSL(elemento);
         if (estaVazia()) {
-            inicio = novoNo;
-            fim = novoNo;
+            inicioDequesl = novoNo;
+            fimDequesl = novoNo;
         } else {
-            novoNo.setNext(inicio);
-            inicio = novoNo;
+            novoNo.setNext(inicioDequesl);
+            inicioDequesl = novoNo;
         }
-        tamanho++;
+        tamanhoDequesl++;
     }
 
     @Override
-    public void inserirFim(Object elemento) { // O(1)
+    public void inserirfim(Object elemento) { // O(1)
         NoSL novoNo = new NoSL(elemento);
         if (estaVazia()) {
-            inicio = novoNo;
-            fim = novoNo;
+            inicioDequesl = novoNo;
+            fimDequesl = novoNo;
         } else {
-            fim.setNext(novoNo);
-            fim = novoNo;
+            fimDequesl.setNext(novoNo);
+            fimDequesl = novoNo;
         }
-        tamanho++;
+        tamanhoDequesl++;
     }
 
     @Override
-    public Object removerInicio() { // O(1)
+    public Object removerinicio() { // O(1)
         if (estaVazia()) throw new EDequeVazio("Deque vazio."); 
 
-        Object elemento = inicio.getElemento();
-        inicio = inicio.getNext(); 
+        Object elemento = inicioDequesl.getElemento();
+        inicioDequesl = inicioDequesl.getNext(); 
         
-        if (inicio == null) {
-            fim = null;
+        if (inicioDequesl == null) {
+            fimDequesl = null;
         }
-        tamanho--;
+        tamanhoDequesl--;
         return elemento;
     }
 
     @Override
-    public Object removerFim() { // O(n)
+    public Object removerfim() { // O(n)
         if (estaVazia()) throw new EDequeVazio("Deque vazio.");
         
-        Object elemento = fim.getElemento();
+        Object elemento = fimDequesl.getElemento();
 
-        if (tamanho == 1) { 
-            inicio = null;
-            fim = null;
+        if (tamanhoDequesl == 1) { 
+            inicioDequesl = null;
+            fimDequesl = null;
         } else {
-            // percorre a lista (O(n))
-            NoSL atual = inicio;
-            while (atual.getNext() != fim) { 
+            //  (O(n))
+            NoSL atual = inicioDequesl;
+            while (atual.getNext() != fimDequesl) { 
                 atual = atual.getNext();
             }
             
-            fim = atual;
-            fim.setNext(null); 
+            fimDequesl = atual;
+            fimDequesl.setNext(null); 
         }
         
-        tamanho--;
+        tamanhoDequesl--;
         return elemento;
     }
 
     @Override
     public Object primeiro() { 
         if (estaVazia()) throw new EDequeVazio("Deque vazio.");
-        return inicio.getElemento();
+        return inicioDequesl.getElemento();
     }
     
     @Override
     public Object ultimo() { 
         if (estaVazia()) throw new EDequeVazio("Deque vazio.");
-        return fim.getElemento();
+        return fimDequesl.getElemento();
     }
 
     @Override
-    public int tamanho() { return tamanho; } 
+    public int tamanho() { return tamanhoDequesl; } 
     
     @Override
-    public boolean estaVazia() { return tamanho == 0; }
+    public boolean estavazia() { return tamanhoDequesl == 0; }
 }

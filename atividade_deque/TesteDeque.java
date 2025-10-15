@@ -5,7 +5,7 @@ public class TesteDeque {
         long startTime, endTime;
         long duracao;
         for (int i = 0; i < N; i++) {
-            deque.inserirFim(i);
+            deque.inserirfim(i);
         }
 
         System.out.println("--- Teste de Eficiencia (" + nome + ") ---");
@@ -13,7 +13,7 @@ public class TesteDeque {
         startTime = System.currentTimeMillis();
         
         for (int i = 0; i < N; i++) {
-            deque.removerFim(); 
+            deque.removerfim(); 
         }
 
         endTime = System.currentTimeMillis();
@@ -30,10 +30,10 @@ public class TesteDeque {
         System.out.println("******************************************************");
         System.out.println("ANALISE DE COMPLEXIDADE: O(1) vs O(N) em removerFim()");
         System.out.println("******************************************************");
-        IDeque dequeDL = new DequeDL();
-        testarRemocaoFim(dequeDL, "Deque DL (Duplamente Encadeada)", N);
-        IDeque dequeSL = new DequeSL();
-        testarRemocaoFim(dequeSL, "Deque SL (Simplesmente Encadeada)", N);
+    IDeque dequeDL = new dequedl();
+    testarRemocaoFim(dequeDL, "dequedl (Duplamente Encadeada)", N);
+    IDeque dequeSL = new dequesl();
+    testarRemocaoFim(dequeSL, "dequesl (Simplesmente Encadeada)", N);
         
         System.out.println("Para resultados mais dramaticos, aumente o valor de N (ex: 50000).");
     }
