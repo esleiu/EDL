@@ -2,7 +2,7 @@ package atividade_pilhas;
 
 public class duaspilhas {
 
-    private static final int CAP_MIN_PARA_REDUCAO = 12;
+    private static final int CAP_MIN = 12;
     private Object[] lista;
     private int topover;
     private int topopre;
@@ -21,7 +21,7 @@ public class duaspilhas {
     private void verredim() {
         if (topover + 1 == topopre) {
             redim(cap * 2);
-        } else if (tamtotal() <= cap / 3 && cap > CAP_MIN_PARA_REDUCAO) {
+        } else if (tamtotal() <= cap / 3 && cap > CAP_MIN) {
             redim(cap / 2);
         }
     }
@@ -119,6 +119,7 @@ public class duaspilhas {
     }
 
     @Override
+
     public String toString() {
         return "duaspilhas [cap=" + cap +
                 ", ver=" + tamver() +
