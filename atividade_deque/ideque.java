@@ -1,12 +1,12 @@
 package atividade_deque;
-public interface IDeque {
-    void inseririnicio(Object elemento);
-    Object removerinicio(); 
-    void inserirfim(Object elemento);
-    Object removerfim(); 
 
+public interface ideque {
+    void inseririnicio(Object elemento);
+    void inserirfim(Object elemento);
+    Object removerinicio();
+    Object removerfim();
     Object primeiro();
-    Object ultimo(); 
+    Object ultimo();
     int tamanho();
     boolean estavazia();
 }
